@@ -123,32 +123,6 @@ class DetailsPage extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.bold),),
             SizedBox(height: 10),
-          //   Row(
-          //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          //     children: [
-          //       // for (int index = 1; index <= 5; index++)
-          //         buildKey(index: index),
-          // SizedBox(width: 5),
-          //     ],
-          //   )
-
-  //         SingleChildScrollView(
-  // scrollDirection: Axis.horizontal,
-  // child: Row(
-  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  //   children: [
-      
-  // ]
-//   ),
-// )
-
-//             ]
-//           ),
-//         ),
-//     );
-  // }
-// }
-
 Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Spaces images evenly
           children: List.generate(imagePaths.length, (index) {

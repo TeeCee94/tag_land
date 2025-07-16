@@ -102,7 +102,7 @@ class _CarouselPageState extends State<CarouselPage> {
     Widget buildImage(String housePix, int index) {
       return Container(
         margin: EdgeInsets.symmetric(horizontal: 5),
-        color: Colors.grey,
+        // color: Colors.grey,
         child: Image.asset(
           housePix, 
         fit: BoxFit.cover

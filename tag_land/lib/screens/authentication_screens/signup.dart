@@ -41,7 +41,8 @@ class _SignupState extends State<Signup> {
                 ),
                 subtitle: Text(
                   'Create an account to get started',
-                  style: TextStyle(fontWeight: FontWeight.normal),
+                  style: TextStyle(
+                    fontWeight: FontWeight.normal),
                 ),
               ),
             ),

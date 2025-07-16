@@ -118,7 +118,7 @@ class _LoginState extends State<Login> {
                           );
                         },
                         child: Text(
-                          'Forgort Password',
+                          'Forgot Password',
                           style: TextStyle(
                             color: Colors.lightBlue,
                             fontStyle: FontStyle.italic,
