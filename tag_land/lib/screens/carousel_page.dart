@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import 'package:tag_land/screens/buyer.dart';
+
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class CarouselPage extends StatefulWidget {
    CarouselPage({super.key});
@@ -16,21 +18,46 @@ class _CarouselPageState extends State<CarouselPage> {
   // final controller = CarouselController();
   int activeIndex = 0;
 
-  final housePix = [
-    'assets/images/houses/house1.jpeg',
-    'assets/images/houses/house2.jpeg',
-    'assets/images/houses/house3.jpeg',
-    'assets/images/houses/house4.jpeg',
-    'assets/images/houses/house5.jpeg',
-    'assets/images/houses/house6.jpeg',
-    'assets/images/houses/house7.jpeg',
-    'assets/images/houses/house8.jpeg',
-  ];
+  // final housePix = [
+  //   'assets/images/houses/house1.jpeg',
+  //   'assets/images/houses/house2.jpeg',
+  //   'assets/images/houses/house3.jpeg',
+  //   'assets/images/houses/house4.jpeg',
+  //   'assets/images/houses/house5.jpeg',
+  //   'assets/images/houses/house6.jpeg',
+  //   'assets/images/houses/house7.jpeg',
+  //   'assets/images/houses/house8.jpeg',
+  // ];
+
+  Future<List<dynamic>> fetchUsers() async {
+  final response = await http.get(
+    Uri.parse('https://raw.githubusercontent.com/TeeCee94/json-files-for-tag_land/refs/heads/main/carousel_page.json'),
+  );
+
+  if (response.statusCode == 200) {
+    return json.decode(response.body);
+  } else {
+    throw Exception('Failed to load JSON');
+  }
+}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: 
+      
+      FutureBuilder<List<dynamic>>(
+        future: fetchUsers(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text("Error: ${snapshot.error}"));
+          } else {
+            final users = snapshot.data!;
+            return 
+            
+            Center(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(0,20,0,0),
           child: Column(
@@ -94,7 +121,10 @@ class _CarouselPageState extends State<CarouselPage> {
             ],
           ),
         ),
-        ),
+        );
+          }
+        }
+      ),
       );
     }
 }
